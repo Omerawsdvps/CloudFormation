@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  Bundan sonra buraya yazacaklarim
+  ben her ne kadar burdan da 
+  hepsi tek bir 
+  satirda yazilacak
+
+Resources:
+  OmerInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0d7a109bf30624c99
+      InstanceType: t2.micro
+      KeyName: remkey
+      SecurityGroups:
+        - !Ref OmerSecGRP
+      Tags:
+        - Key: Name
+          Value: Omer-CFN-instance
+  OmerSecGRP:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allows only SSH Connection # required
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
